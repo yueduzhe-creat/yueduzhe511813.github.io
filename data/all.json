@@ -1,0 +1,991 @@
+[
+  {
+    "topic": "1. 基础范式",
+    "title": "Mathematical discoveries from program search with large language models",
+    "method": "FunSearch（Function-space Search）",
+    "motivation": "LLM 存在幻觉，难以直接用于严谨的科学发现；传统搜索直接搜索“解”而非“求解方法”，可解释性与可迁移性有限。",
+    "summary": "提出函数空间搜索范式：把预训练 LLM 与系统性评估器配对，搜索“描述如何求解的程序”而非解本身，通过进化迭代持续改进候选程序。在极值组合数学的 cap set 问题上给出超越已知最优的新构造，并在在线装箱问题上发现优于常用基线的启发式。生成程序比原始解更具可解释性，可形成领域专家与系统的反馈闭环。该工作是 LLM + 进化计算做自动算法/启发式设计的奠基性工作。",
+    "authors": "Bernardino Romera-Paredes, Mohammadamin Barekatain, Alexander Novikov, Matej Balog, M. Pawan Kumar, Emilien Dupont, Francisco J. R. Ruiz, Jordan S. Ellenberg, Pengming Wang, Omar Fawzi, Pushmeet Kohli, Alhussein Fawzi（Google DeepMind）",
+    "venue": "Nature（Vol. 625, pp. 468–475；在线发表于 2023-12-14）",
+    "year": 2024,
+    "url": "https://doi.org/10.1038/s41586-023-06924-6",
+    "tags": [
+      "程序空间搜索",
+      "LLM+进化计算",
+      "科学发现",
+      "可解释性"
+    ],
+    "presenter": "",
+    "id": "all-1"
+  },
+  {
+    "topic": "1. 基础范式",
+    "title": "Evolution of Heuristics: Towards Efficient Automatic Algorithm Design Using Large Language Model",
+    "method": "EoH（Evolution of Heuristics）",
+    "motivation": "人工设计启发式耗时耗力、依赖丰富经验；早期 LLM 方法只进化代码，LLM 调用成本高、搜索效率低。",
+    "summary": "提出“思想（thought）+代码（code）”双轨进化范式：先用自然语言描述启发式思想，再由 LLM 翻译为可执行代码，二者在同一进化框架中共同进化。设计 5 种遗传算子（探索/修改两类）。在三个经典组合优化基准上，以远低于 FunSearch 的 LLM 调用预算取得更优性能，显著提升 LLM-AHD 的效率。",
+    "authors": "Fei Liu, Xialiang Tong, Mingxuan Yuan, Xi Lin, Fu Luo, Zhenkun Wang, Zhichao Lu, Qingfu Zhang",
+    "venue": "ICML 2024（国际机器学习大会）",
+    "year": 2024,
+    "url": "https://arxiv.org/abs/2401.02051",
+    "tags": [
+      "思想-代码双表示",
+      "进化算子设计",
+      "低成本搜索"
+    ],
+    "presenter": "",
+    "id": "all-2"
+  },
+  {
+    "topic": "2. 搜索效率提升与进化机制增强",
+    "title": "ReEvo: Large Language Models as Hyper-Heuristics with Reflective Evolution",
+    "method": "ReEvo（Reflective Evolution）",
+    "motivation": "NP-hard 组合优化问题依赖领域专家反复试错设计启发式；需要让 LLM 在开放式启发式空间中高效探索，并获得类似梯度的有效引导信号。",
+    "summary": "提出“语言超启发式（Language Hyper-Heuristics, LHH）”新概念：以 LLM 生成启发式，人工干预少、启发式空间开放。提出 ReEvo，把进化搜索与 LLM 反思机制结合，用短期反思生成子代、长期反思跨代累积经验，形成“语言梯度”。在 5 类算法、6 种 COP、白盒与黑盒设定下均取得 SOTA 或具竞争力结果，样本效率显著提升。",
+    "authors": "Haoran Ye, Jiarui Wang, Zhiguang Cao, Federico Berto, Chuanbo Hua, Haeyeon Kim, Jinkyoo Park, Guojie Song",
+    "venue": "NeurIPS 2024（神经信息处理系统大会）",
+    "year": 2024,
+    "url": "https://arxiv.org/abs/2402.01145",
+    "tags": [
+      "语言超启发式",
+      "反思机制",
+      "短期/长期经验",
+      "样本效率"
+    ],
+    "presenter": "",
+    "id": "all-3"
+  },
+  {
+    "topic": "2. 搜索效率提升与进化机制增强",
+    "title": "HSEvo: Elevating Automatic Heuristic Design with Diversity-Driven Harmony Search and Genetic Algorithm Using LLMs",
+    "method": "HSEvo（Harmony Search Evolution）",
+    "motivation": "现有方法在探索（多样性）与利用（收敛）之间失衡：ReEvo 收敛好但多样性不足，EoH 多样性高但性能不稳定；同时缺少对启发式搜索空间性质的度量。",
+    "summary": "提出两种多样性度量指标，并对 FunSearch、EoH、ReEvo 的搜索空间特性做分析。提出 HSEvo：融合和谐搜索算法与遗传算法，加入“快速反思（Flash reflection）”组件，动态平衡多样性与收敛，同时降低 LLM 调用成本。",
+    "authors": "Pham Vu Tuan Dat, Long Doan, Huynh Thi Thanh Binh",
+    "venue": "AAAI 2025（Proceedings of AAAI, Vol. 39）",
+    "year": 2025,
+    "url": "https://doi.org/10.1609/aaai.v39i25.34898",
+    "tags": [
+      "多样性度量",
+      "和谐搜索",
+      "探索-利用平衡",
+      "降低 LLM 调用"
+    ],
+    "presenter": "",
+    "id": "all-4"
+  },
+  {
+    "topic": "2. 搜索效率提升与进化机制增强",
+    "title": "Monte Carlo Tree Search for Comprehensive Exploration in LLM-Based Automatic Heuristic Design",
+    "method": "MCTS-AHD",
+    "motivation": "现有 LLM-AHD 方法用固定规模种群维护优质启发式并靠进化迭代，这种种群式流程无法充分挖掘单个启发式的潜力，容易收敛到局部最优。",
+    "summary": "提出用蒙特卡洛树搜索（MCTS）组织 LLM 生成的启发式：以树结构保存全部历史启发式，使暂时表现不佳的节点也能被继续开发，从而更全面探索启发式空间。在多个复杂优化任务上显著提升生成启发式的质量。该方向后续出现 CogMCTS 等将认知引导与 MCTS 结合的扩展工作。",
+    "authors": "Zhi Zheng, Zhuoliang Xie, Zhenkun Wang, Bryan Hooi",
+    "venue": "ICML 2025（国际机器学习大会, Poster）",
+    "year": 2025,
+    "url": "https://arxiv.org/abs/2501.08603",
+    "tags": [
+      "蒙特卡洛树搜索",
+      "非贪心探索",
+      "跳出局部最优"
+    ],
+    "presenter": "",
+    "id": "all-5"
+  },
+  {
+    "topic": "2. 搜索效率提升与进化机制增强",
+    "title": "CALM: Co-evolution of Algorithms and Language Model for Automatic Heuristic Design",
+    "method": "CALM",
+    "motivation": "现有方法主要依靠“语言引导”（操控提示生成过程）驱动启发式进化，而不调整底层 LLM 本身，模型能力未被充分利用。",
+    "summary": "提出语言引导与数值引导相结合的混合框架：数值引导通过基于生成启发式质量的强化学习微调 LLM，使语言模型与搜索过程协同进化（co-evolve）。在多种优化任务上超越 SOTA 基线，代表了“算法-模型联合优化”这一新方向。",
+    "authors": "Ziyao Huang, Weiwei Wu, Kui Wu, Jianping Wang, Wei-Bin Lee",
+    "venue": "ICLR 2026（国际学习表征会议, Poster；arXiv 预印本 2025）",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2505.12285",
+    "tags": [
+      "强化学习微调",
+      "语言+数值引导",
+      "算法-模型协同进化"
+    ],
+    "presenter": "",
+    "id": "all-6"
+  },
+  {
+    "topic": "2. 搜索效率提升与进化机制增强",
+    "title": "HiFo-Prompt: Prompting with Hindsight and Foresight for LLM-based Automatic Heuristic Design",
+    "method": "HiFo-Prompt",
+    "motivation": "LLM-AHD 普遍使用静态算子，且缺乏知识积累机制，限制了搜索效果与效率。",
+    "summary": "提出“前瞻（Foresight）+后顾（Hindsight）”两种协同提示策略：前瞻提示依据种群动态自适应引导搜索、管理探索-利用权衡；后顾提示模拟人类专家经验，把历史成功启发式蒸馏为可复用的基本设计原则，形成持久知识库，使 LLM 能从自身经验中学习。实验显著优于 SOTA 的 LLM-AHD 方法。",
+    "authors": "Chentong Chen, Mengyuan Zhong, Ye Fan, Jialong Shi, Jianyong Sun",
+    "venue": "ICLR 2026（国际学习表征会议, Poster；arXiv 预印本 2025）",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2508.13333",
+    "tags": [
+      "提示工程",
+      "动态算子",
+      "知识蒸馏",
+      "持久知识库"
+    ],
+    "presenter": "",
+    "id": "all-7"
+  },
+  {
+    "topic": "2. 搜索效率提升与进化机制增强",
+    "title": "Partition to Evolve: Niching-enhanced Evolution with LLMs for Automated Algorithm Discovery",
+    "method": "PartEvo",
+    "motivation": "LLM 辅助进化搜索（LES）在抽象语言空间中运作，经典进化策略（如小生境技术）难以直接迁移应用。",
+    "summary": "提出通用 LES 框架，通过“特征辅助的小生境构建”把基于小生境的搜索策略无缝引入抽象搜索空间；基于该框架提出 PartEvo，结合小生境协同搜索与高级提示策略提升算法发现效率。在合成与真实优化问题上优于人工设计基线与 EoH、FunSearch 等既有 LES 方法；资源调度任务上相对常用基线最高提升 90.1%。",
+    "authors": "Qinglong Hu, Qingfu Zhang",
+    "venue": "NeurIPS 2025（神经信息处理系统大会, Poster）",
+    "year": 2025,
+    "url": "https://doi.org/10.52202/085713-5177",
+    "tags": [
+      "小生境/多样性维持",
+      "特征辅助",
+      "协同搜索"
+    ],
+    "presenter": "",
+    "id": "all-8"
+  },
+  {
+    "topic": "2. 搜索效率提升与进化机制增强",
+    "title": "RefineEvo: Planning-Guided Heuristic Evolution with Bidirectional Experience",
+    "method": "RefineEvo",
+    "motivation": "现有 LLM-AHD 方法依赖固定的进化算子，难以有效积累与复用历史搜索经验。",
+    "summary": "把 AHD 从“静态试错”转变为“规划引导、经验驱动”的系统：Planner 依据当前搜索状态动态调度进化算子并触发精炼，Reflector 把经验蒸馏进包含正向洞见与负向陷阱的“双向经验池”，实现与场景条件相关的轨迹级经验指导，使系统能自适应问题复杂度的演化。在多个经典组合优化基准上稳定优于强基线，并在提升解质量的同时改善 token 效率。",
+    "authors": "Yang Wu, Junran Pan, Yifan Zhang, Ning Xu, Fanshuo Zeng, Jian Cheng",
+    "venue": "ICML 2026（国际机器学习大会）",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2607.11358",
+    "tags": [
+      "算子动态调度",
+      "双向经验池",
+      "规划-反思",
+      "Token 效率"
+    ],
+    "presenter": "",
+    "id": "all-9"
+  },
+  {
+    "topic": "2. 搜索效率提升与进化机制增强",
+    "title": "Fine-tuning Large Language Model for Automated Algorithm Design",
+    "method": "DAR（Diversity-Aware Rank-based sampling）+ DPO",
+    "motivation": "自动算法设计主流范式把LLM嵌入搜索框架迭代生成算法，依赖面向通用编码任务训练的开箱即用LLM，LLM调用开销大；不同通用LLM间性能差异小；传统微调方法不完全适配。",
+    "summary": "提出面向自动算法设计(AAD)的LLM任务特定微调两阶段路线：先借助EoH/FunSearch等迭代搜索生成大量有效算法存入算法数据库，再提出多样性感知基于排序采样策略DAR，把算法按适应度分层、跨层采样构建兼顾质量与多样性的偏好三元组，用直接偏好优化(DPO)+LoRA低秩适配器微调LLM，使模型输出对齐任务目标。在ASP、TSP、CVRP三个任务上，微调后的Llama-3.2-1B显著优于开箱即用模型",
+    "authors": "Fei Liu, Rui Zhang, Xi Lin, Zhichao Lu, Qingfu Zhang（香港城市大学 / 西安交通大学）",
+    "venue": "ICLR 2026（国际学习表征会议）",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2507.10614",
+    "tags": [
+      "模型微调",
+      "多样性感知排序采样",
+      "DPO偏好优化",
+      "LoRA",
+      "任务特定适配",
+      "泛化迁移"
+    ],
+    "presenter": "",
+    "id": "all-10"
+  },
+  {
+    "topic": "2. 搜索效率提升与进化机制增强",
+    "title": "LLaMEA: A Large Language Model Evolutionary Algorithm for Automatically Generating Metaheuristics",
+    "method": "LLaMEA（Large Language Model Evolutionary Algorithm）",
+    "motivation": "人工设计元启发式算法依赖专家经验；模块化自动设计受限于预定义组件；已有 LLM 方法主要面向组合优化中的局部函数，缺少完整连续优化算法的自动生成与规范评估。",
+    "summary": "提出以完整优化算法代码为进化个体的自动设计框架，将 LLM 代码生成、运行评估、错误反馈和迭代改进组成闭环。支持 (1+1) 精英选择与 (1,1) 非精英选择，由 LLM 决定局部修改或整体重设计。结合 IOHprofiler 与 BBOB，以收敛曲线上方面积 AOCC 汇总全过程优化表现，并将性能、标准差及运行错误反馈给 LLM。在 24 个 BBOB 函数上验证，生成算法在 5 维测试中超过所比较的 CMA-ES、DE 基线，并在未参与生成的 10、20 维实例上表现出竞争力。",
+    "authors": "Niki van Stein, Thomas Bäck（荷兰莱顿大学，Leiden Institute of Advanced Computer Science）",
+    "venue": "IEEE Transactions on Evolutionary Computation，29(2): 331–345；2024-11-13",
+    "year": 2025,
+    "url": "https://doi.org/10.1109/TEVC.2024.3497793",
+    "tags": [
+      "完整算法进化",
+      "连续黑箱优化",
+      "执行反馈",
+      "AOCC",
+      "进化策略"
+    ],
+    "presenter": "",
+    "id": "all-11"
+  },
+  {
+    "topic": "2. 搜索效率提升与进化机制增强",
+    "title": "PathWise: Planning through World Model for Automated Heuristic Design via Self-Evolving LLMs",
+    "method": "PathWise",
+    "motivation": "现有方法依赖固定进化规则和静态提示模板，缺少对启发式推导关系、成功或失败经验的结构化记忆，容易产生短视搜索、重复生成和冗余评估。",
+    "summary": "将启发式发现建模为推导图上的序贯决策过程：节点记录代码、设计描述、推导理由和性能，边记录父代到子代的推导关系。构建“策略智能体—世界模型智能体—双评论智能体”协作机制，分别负责规划父代与修改方向、生成候选代码，以及向规划和生成环节提供定向反思。结合外层种群管理、内层图搜索、提示扰动和状态顺序打乱，兼顾记忆与探索；通过上下文反馈实现适应，无需更新 LLM 参数。在六类组合优化问题及构造式、ACO、GLS 框架中验证，展现更快收敛与跨规模泛化能力。",
+    "authors": "Oguzhan Gungordu, Siheng Xiong, Faramarz Fekri（美国佐治亚理工学院）",
+    "venue": "ICML 2026",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2601.20539",
+    "tags": [
+      "推导图记忆",
+      "世界模型规划",
+      "多智能体",
+      "定向反思",
+      "自适应进化"
+    ],
+    "presenter": "",
+    "id": "all-12"
+  },
+  {
+    "topic": "2. 搜索效率提升与进化机制增强",
+    "title": "MeLA: AMetacognitive LLM-Driven Architecture for Automatic Heuristic\nDesign",
+    "method": "MeLA",
+    "motivation": "传统 AHD 方法大多直接在启发式代码层面做进化，缺少策略层面的元认知反思；反思仅局限于代码本身，缺少对生成策略、提示思路的迭代优化，容易在代码空间早熟收敛，泛化与可解释性不足。",
+    "summary": "提出元认知驱动的 MeLA 架构，把启发式设计建模为提示策略（prompt）的进化，而非代码进化。包含问题分析模块、错误诊断修正模块、元认知搜索引擎；基于启发式的性能反馈，迭代优化 LLM 生成启发式的提示策略，在策略层面完成反思改写，代码多样性依赖 LLM 生成过程。在多个组合优化基准上验证，相比 EoH、ReEvo 等基线，提升启发式鲁棒性与效果。",
+    "authors": "Zishang Qiu, Xinan Chen*, Long Chen, Ruibin Bai（宁波诺丁汉大学、浙江师范大学）",
+    "venue": "Expert Systems with Applications（ESWA，SCI 期刊）",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2507.20541",
+    "tags": [
+      "元认知反思",
+      "提示策略进化",
+      "错误诊断",
+      "策略层面优化",
+      "可解释启发式生成"
+    ],
+    "presenter": "",
+    "id": "all-13"
+  },
+  {
+    "topic": "2. 搜索效率提升与进化机制增强",
+    "title": "ES-AHD: An Evolution Strategy Framework for\nAutomatic Heuristic Design",
+    "method": "ES-AHD",
+    "motivation": "传统 AHD 进化以个体代码随机突变为核心，搜索盲目，探索与利用失衡；缺少类似 CMA-ES 的分布引导采样机制，采样方向缺少中心引导，容易陷入语义局部最优。",
+    "summary": "将进化策略 ES（CMA-ES 思想）融入 LLM 自动启发式设计。两大核心机制：①语义重组（Semantic Recombination）：从精英启发式中提取核心设计思路，形成中心引导的定向采样；②基于温度采样的随机协方差自适应：把 CMA-ES 协方差映射为 LLM 采样温度，通过动量随机游走动态调整搜索半径，兼顾局部微调与跳出局部最优。",
+    "authors": "Yutao Lai, Kezhao Lai, Hai-Lin Liu*, Yuping Wang, Ping Guo（广东工业大学、西安电子科技大学）",
+    "venue": "预印本（arXiv）",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2609.00023",
+    "tags": [
+      "进化策略 CMA-ES",
+      "语义重组",
+      "温度自适应采样",
+      "协方差适配",
+      "定向语义搜索"
+    ],
+    "presenter": "",
+    "id": "all-14"
+  },
+  {
+    "topic": "2. 搜索效率提升与进化机制增强",
+    "title": "Breaking Validity-Induced Boundaries to Expand Algorithm Search Space: A Two-Stage AST-Based Operator for LLM-Driven Automated Heuristic Evolution",
+    "method": "EoH-i",
+    "motivation": "现有单阶段语义进化算子强制中间个体必须是合法可运行代码，被 “代码有效性边界” 约束，算法搜索空间被压缩，多样性不足，容易早熟收敛。",
+    "summary": "提出两阶段 AST 抽象语法树进化算子，可插拔兼容 EoH/EoH-S/ReEvo 等现有 AHD 框架。阶段 1：直接对启发式代码 AST 子树做交叉变异，故意生成非法中间代码 I-Code；阶段 2：LLM 修复非法语法结构，得到可运行启发式；种群可保留非法结构变体，保留潜在新颖结构模式，突破合法代码边界，扩大搜索空间。",
+    "authors": "Shengming Sun, Jialong Shi*（西安交通大学）",
+    "venue": "GECCO 2026",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2604.16420",
+    "tags": [
+      "AST 抽象语法树进化",
+      "两阶段算子",
+      "非法代码扰动",
+      "代码修复",
+      "可插拔进化算子"
+    ],
+    "presenter": "",
+    "id": "all-15"
+  },
+  {
+    "topic": "2. 搜索效率提升与进化机制增强",
+    "title": "A Memetic and Reflective Evolution Framework for Automatic\nHeuristic Design Using Large Language Models",
+    "method": "EoH-MR",
+    "motivation": "原版 EoH 仅做种群层面全局进化，生成启发式粗糙缺少局部求精；反思仅基于当前种群，缺少长期历史经验记忆，反复试错、样本效率低，面向工程调度场景泛化不足。",
+    "summary": "模因 + 记忆反思进化框架 EoH-MR。在 EoH 全局进化基础上增加模因局部求精模块，对优质启发式做领域专属局部微调；维护记忆感知经验库，存储高分 / 低分启发式、失败案例，反思时检索历史经验，减少无效采样，提升收敛速度。在 AGV - 无人机协同调度、车间调度 Job Shop 验证。",
+    "authors": "Fubo Qi, Tianyu Wang, Ruixiang Zheng, Mian Li*（上海交通大学 UM-SJTU 联合研究院）",
+    "venue": "Applied Sciences（MDPI, SCI）",
+    "year": 2025,
+    "url": "https://doi.org/10.3390/app15158735",
+    "tags": [
+      "模因进化",
+      "记忆感知反思",
+      "局部求精",
+      "工程调度启发式",
+      "经验复用"
+    ],
+    "presenter": "",
+    "id": "all-16"
+  },
+  {
+    "topic": "2. 搜索效率提升与进化机制增强",
+    "title": "MeEvo: Metacognitive Evolution Combined with Natural Evolution for Automatic Heuristic Design",
+    "method": "MeEvo",
+    "motivation": "现有两类范式各有短板：自然进化（EoH/ReEvo）擅长种群探索，但丢失推理轨迹，知识复用弱；元认知反思（MeLA）擅长策略反思，但缺少种群重组，容易早熟；二者运行条件不兼容，难以简单合并，无法同时兼顾探索‑利用平衡arXiv。",
+    "summary": "循环耦合双层框架 MeEvo；①自然进化层：种群层面做代码交叉变异，负责大范围探索，保存推理轨迹、性能记录；②元认知进化层：读取历史全量记录做反思；两层交替执行而非并行；借鉴基因型‑表型思想，推理轨迹与启发式代码分开演化；在多类基准与复杂约束任务上稳定性、性能优于基线arXiv。",
+    "authors": "Zishang Qiu, Xinan Chen, Long Chen, Ruibin Bai（宁波诺丁汉大学、浙江师范大学）",
+    "venue": "arXiv 预印本（ICLR2027 在审）",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2606.14202",
+    "tags": [
+      "元认知进化",
+      "自然进化",
+      "交替双循环",
+      "推理轨迹继承",
+      "探索‑利用动态平衡"
+    ],
+    "presenter": "",
+    "id": "all-17"
+  },
+  {
+    "topic": "2. 搜索效率提升与进化机制增强",
+    "title": "Experience-guided reflective co-evolution of prompts and heuristics for automatic algorithm design",
+    "method": "EvoPH",
+    "motivation": "传统 AHD 只进化启发式代码，提示词固定不变；提示只作为输入，不参与进化；容易陷入局部最优，种群多样性维持手段单一，缺少提示‑启发式双向协同优化机制arXiv。",
+    "summary": "EvoPH（Experience‑Guided Reflective Co‑Evolution of Prompt and Heuristics）提示‑启发式双种群并行共进化；引入岛模型（island‑migration）+ 精英迁移；提示种群与启发式种群互相提供反馈，提示随性能反馈迭代更新；提示不再是静态模板，成为可进化个体；TSP、BPP 上验证，缓解早熟，提升解质量arXiv。",
+    "authors": "Yihong Liu, Junyi Li, Hongyu Lu, Wayne Xin Zhao, Ji‑Rong Wen（人大）",
+    "venue": "arXiv 预印本",
+    "year": 2025,
+    "url": "https://arxiv.org/abs/2509.24509",
+    "tags": [
+      "提示‑启发式共进化",
+      "岛模型",
+      "精英迁移",
+      "双种群协同",
+      "经验引导反思"
+    ],
+    "presenter": "",
+    "id": "all-18"
+  },
+  {
+    "topic": "2. 搜索效率提升与进化机制增强",
+    "title": "PyVRP+: LLM-Driven Metacognitive Heuristic Evolution for  Hybrid Genetic Search in Vehicle Routing Problems",
+    "method": "PyVRP+",
+    "motivation": "多数 AHD 是黑盒式代码变异，只依赖即时性能分数反馈；缺少显式假设推理、故障诊断；对成熟现有元启发式框架（HGS 混合遗传搜索）内部组件进化支持不足，很难产出可直接嵌入现有求解器的高质量算子组件arXiv。",
+    "summary": "提出 MEP 元认知进化编程，构建Reason‑Act‑Reflect（推理‑实现‑反思）结构化认知循环；强制 LLM 显式诊断缺陷、提出设计假设、实现代码、自我反思局限；面向 VRP 领域，以 PyVRP/HGS 作为测试床，自动进化 HGS 内部核心算子组件，产出改进求解器 PyVRP⁺；生成组件可直接复用进现有求解器，同时提升解质量、降低运行时间。",
+    "authors": "Manuj Malik, Jianan Zhou, Shashank Reddy Chirra, Zhiguang Cao",
+    "venue": "AAMAS 2026（CCF C）",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2604.07872",
+    "tags": [
+      "Reason‑Act‑Reflect 循环",
+      "元认知进化编程 MEP",
+      "现有求解器组件进化",
+      "VRP/HGS",
+      "假设驱动启发式生成"
+    ],
+    "presenter": "",
+    "id": "all-19"
+  },
+  {
+    "topic": "2. 搜索效率提升与进化机制增强",
+    "title": "SimpleEvol: An Agent-Loop Framework for LLM-Driven Automated Heuristic Design with  Minimal Human Priors",
+    "method": "SimpleEvol",
+    "motivation": "现有 LLM‑AHD 框架大量引入人工预设的进化模块（固定交叉、变异算子、复杂种群管理），把 LLM 降级为工具组件，压制大模型本身通用推理能力；框架人工先验过多，无法充分利用模型能力随规模增长带来的收益，缺少衡量框架人工先验、智能转化效率的评价指标。",
+    "summary": "提出Agent‑Loop 极简智能体循环 AHD 框架 SimpleEvol，尽量去除人工工程化先验，把 LLM 作为完整自主智能体完成完整启发式设计闭环；提出两个新指标：AHI（框架人工先验度）、ICE（智能转化效率）；不预设固定 EC 算子，由 LLM 自主完成构思‑生成‑评估‑反思迭代。在多个组合优化任务验证：更少人工先验的框架具备更高 ICE，大模型下收益更明显。",
+    "authors": "Jianghan Zhu, Cong Zhang, Rongjie Zhu, Chi Zhang, Zhiguang Cao（新加坡管理大学等）",
+    "venue": "arXiv 预印本",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2609.37172",
+    "tags": [
+      "Agent‑loop 智能体循环",
+      "低人工先验",
+      "ICE 智能转化效率",
+      "AHI 人工先验度量",
+      "模型‑centric AHD"
+    ],
+    "presenter": "",
+    "id": "all-20"
+  },
+  {
+    "topic": "3. 完整求解器或多组件协同设计",
+    "title": "A2DEPT: Large Language Model-Driven Automated Algorithm Design via Evolutionary Program Trees",
+    "method": "A2DEPT",
+    "motivation": "多数 LLM-AHD 方法为保证可执行性而强制使用固定算法模板，把搜索局限在组件级调优，限制了系统级的算法表达力。",
+    "summary": "把 LLM 视为“系统级算法架构师”：通过树结构进化搜索、混合选择与分层算子探索庞大的程序空间，实现对完整算法的迭代精炼；同时用轻量级程序维护回路做反馈驱动的修复，保证开放生成的程序可执行。在标准与强约束基准上持续优于代表性 LLM 基线，标准基准上相对最强竞争基线将平均归一化最优间隙降低 9.8%。",
+    "authors": "Bin Chen, Shouliang Zhu, Beidan Liu, Yong Zhao, Tianle Pu, Huichun Li, Zhengqiu Zhu",
+    "venue": "ICML 2026",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2604.24043",
+    "tags": [
+      "系统级算法合成",
+      "进化程序树",
+      "可执行性修复"
+    ],
+    "presenter": "",
+    "id": "all-21"
+  },
+  {
+    "topic": "3. 完整求解器或多组件协同设计",
+    "title": "MOTIF: Multi-strategy Optimization via Turn-based Interactive Framework",
+    "method": "MOTIF",
+    "motivation": "多数方法把搜索限制在单一元素（通常是启发式打分函数）上，错失了更广阔的创新空间。",
+    "summary": "把求解器设计形式化为更一般的“多策略优化”问题：在统一目标下联合改进一组相互依赖的算法组件。提出 MOTIF，基于 Monte Carlo Tree Search 让两个 LLM 智能体轮流（turn-based）优化——每轮一个智能体改进部分组件，并影响另一个智能体后续的决策。在多个组合优化问题上得到更优的组件组合与求解性能。",
+    "authors": "Nguyen Viet Tuan Kiet, Dao Van Tung, Tran Cong Dao, Huynh Thi Thanh Binh",
+    "venue": "AAAI 2026（Proceedings of AAAI, Vol. 40）",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2508.03929",
+    "tags": [
+      "多策略联合优化",
+      "双智能体轮替",
+      "MCTS",
+      "组件耦合"
+    ],
+    "presenter": "",
+    "id": "all-22"
+  },
+  {
+    "topic": "3. 完整求解器或多组件协同设计",
+    "title": "Evolving Interdependent Operators with Large Language Models for Multi-Objective Combinatorial Optimization",
+    "method": "E2OC（Evolution of Operator Combination）",
+    "motivation": "邻域搜索算子对多目标进化算法（MOEA）性能至关重要且依赖专家设计；已有 LLM-AHD 方法多独立优化单个启发式或组件，缺乏对算子之间动态耦合关系的显式探索与利用。",
+    "summary": "把 MOEA 中的多算子优化建模为马尔可夫决策过程，使相互依赖的算子可通过序贯决策逐步改进。提出 E2OC 框架，用 Monte Carlo Tree Search 逐步搜索算子设计策略的组合，并引入算子轮换／operator rotation机制，实现设计策略与可执行代码的共同进化，从而协同优化一组耦合算子。",
+    "authors": "Junhao Qiu, Xin Chen, Liang Ge, Liyong Lin, Zhichao Lu, Qingfu Zhang",
+    "venue": "ICML 2026（国际机器学习大会）",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2601.17899",
+    "tags": [
+      "多算子协同",
+      "MDP 建模",
+      "MCTS",
+      "算子角色"
+    ],
+    "presenter": "",
+    "id": "all-23"
+  },
+  {
+    "topic": "4. 多目标启发式设计",
+    "title": "Multi-Objective Evolution of Heuristic Using Large Language Model",
+    "method": "MEoH（Multi-objective Evolution of Heuristics）",
+    "motivation": "已有研究只以目标问题上的最优性能为唯一目标，忽略了效率、可扩展性等在实际中同样关键的准则。",
+    "summary": "首次把启发式搜索建模为多目标优化问题，在性能之外引入实用准则。针对 LLM 多目标启发式搜索空间复杂、传统多目标优化方法难以处理的问题，提出首个基于 LLM 的多目标进化方法 MEoH，可直接生成逼近帕累托前沿的启发式集合，无需显式的目标分解。",
+    "authors": "Shunyu Yao, Fei Liu, Xi Lin, Zhichao Lu, Zhenkun Wang, Qingfu Zhang",
+    "venue": "AAAI 2025（Proceedings of AAAI, Vol. 39）",
+    "year": 2025,
+    "url": "https://doi.org/10.1609/aaai.v39i25.34922",
+    "tags": [
+      "多目标优化",
+      "性能-效率权衡",
+      "帕累托前沿"
+    ],
+    "presenter": "",
+    "id": "all-24"
+  },
+  {
+    "topic": "4. 多目标启发式设计",
+    "title": "Pareto-Grid-Guided Large Language Models for Fast and High-Quality Heuristics Design in Multi-Objective Combinatorial Optimization",
+    "method": "MPaGE",
+    "motivation": "多目标组合优化（MOCOP）需同时优化相互冲突的目标；已有 LLM 方法多聚焦单目标任务，且普遍忽视运行时间效率与启发式多样性。",
+    "summary": "提出 MPaGE（Multi-heuristics for MOCOP via Pareto-Grid-guided Evolution of LLMs）：用帕累托网格引导 LLM 的进化，快速生成一组高质量且多样化的启发式，并显式关注运行效率，从而在 MOCOP 上兼顾速度与质量。",
+    "authors": "Ha Minh Hieu, Hung Phan, Tung Duy Doan, Tung Dao, Cong Dao Tran, Huynh Thi Thanh Binh",
+    "venue": "AAAI 2026（Proceedings of AAAI, Vol. 40）",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2507.20923",
+    "tags": [
+      "帕累托网格",
+      "启发式多样性",
+      "多目标 CO",
+      "运行效率"
+    ],
+    "presenter": "",
+    "id": "all-25"
+  },
+  {
+    "topic": "5. 实例异质性导向的启发式或启发式集合设计",
+    "title": "LLM-Driven Instance-Specific Heuristic Generation and Selection",
+    "method": "InstSpecHH",
+    "motivation": "将 LLM 与进化算法结合的方法普遍采用“问题级”范式，对全部实例使用同一个算法，没有考虑实例之间的异质性。",
+    "summary": "提出“实例特化启发式生成”概念：依据实例特征把问题类划分为若干子类，对每个子类做差异化、自动化的启发式设计，再在求解时为每个实例选择最合适的启发式。相较问题级单一算法，显著提升异构实例集合上的解质量与稳定性。",
+    "authors": "Shaofeng Zhang, Shengcai Liu, Ning Lu, Jiahao Wu, Ji Liu, Yew-Soon Ong, Ke Tang",
+    "venue": "arXiv 预印本（2025 首发，2026 年更新至 v3）",
+    "year": 2025,
+    "url": "https://arxiv.org/abs/2506.00490",
+    "tags": [
+      "实例聚类/划分",
+      "特化启发式",
+      "实例级选择"
+    ],
+    "presenter": "",
+    "id": "all-26"
+  },
+  {
+    "topic": "5. 实例异质性导向的启发式或启发式集合设计",
+    "title": "HeurAgenix: Leveraging LLMs for Solving Complex Combinatorial Optimization Challenges",
+    "method": "HeurAgenix",
+    "motivation": "传统启发式算法设计高度依赖人工经验，现有LLM4AHD方法在求解阶段固定启发式难以在不同实例间泛化。",
+    "summary": "提出两阶段超启发式框架：启发式进化阶段由 LLM 比较种子启发式解与更优解，抽取可复用的进化策略；问题求解阶段由 LLM 感知问题实例状态、动态选择最有希望的启发式。选择器可用 SOTA 大模型或低成本微调小模型，兼顾效果与推理开销；针对 CO 问题可靠监督稀缺，构造了相应训练数据。在多个组合优化问题上优于已有 SOTA 求解器。",
+    "authors": "Xianliang Yang, Ling Zhang, Haolong Qian, Lei Song, Jiang Bian",
+    "venue": "arXiv 预印本（2025；尚未见正式发表记录）",
+    "year": 2025,
+    "url": "https://arxiv.org/abs/2506.15196",
+    "tags": [
+      "两阶段超启发式",
+      "启发式进化+动态选择",
+      "成本可调推理"
+    ],
+    "presenter": "",
+    "id": "all-27"
+  },
+  {
+    "topic": "5. 实例异质性导向的启发式或启发式集合设计",
+    "title": "EoH-S: Evolution of Heuristic Set Using LLMs for Automated Heuristic Design",
+    "method": "EoH-S",
+    "motivation": "现有 LLM 自动启发式设计方法主要寻找训练实例上平均表现最好的单一启发式，难以覆盖不同实例的结构差异，也容易在规模或分布变化时性能下降。为每个实例分别设计启发式又代价过高。",
+    "summary": "提出自动启发式集合设计（AHSD），将优化对象扩展为具有实例性能互补性的启发式集合。定义互补性能指标 CPI：先取集合在每个实例上的最佳成绩，再跨实例平均，以评价集合的整体覆盖能力。在 EoH 的“思想＋代码”表示基础上提出 EoH-S，包含两项关键机制：①互补种群管理（CPM）②互补感知 。前者依据实例性能向量的曼哈顿距离选择差异较大的父代，引导 LLM 生成不同设计；后者修改已有启发式，强化其优势。在线装箱、TSP 和 CVRP 实验验证了集合的互补性及跨规模、跨分布泛化表现。",
+    "authors": "Fei Liu; Yilu Liu; Qingfu Zhang; Xialiang Tong; Mingxuan Yuan",
+    "venue": "AAAI 2026",
+    "year": 2026,
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/41038",
+    "tags": [
+      "启发式集合设计",
+      "性能互补集合",
+      "跨实例分布"
+    ],
+    "presenter": "",
+    "id": "all-28"
+  },
+  {
+    "topic": "5. 实例异质性导向的启发式或启发式集合设计",
+    "title": "Beyond Average Performance: Dynamic Instance Clustering and Specialized Algorithm Design in LLM-Assisted Evolutionary Search",
+    "method": "DyCA",
+    "motivation": "现有 LLM 辅助进化搜索（LES）方法只优化平均性能，会把搜索资源集中在对平均指标贡献最大的实例上，导致尾部实例得不到服务，鲁棒性与实际可靠性差。",
+    "summary": "提出 DyCA：把实例聚类作为搜索过程中共同演化的组件，复用累积的评估数据作为“无特征（feature-free）”信号，按算法响应模式逐步划分实例，避免对人工特征的依赖；再为每个聚类发现特化的算法，构建在异构实例分布下更可靠的算法组合（portfolio），显著增强尾部鲁棒性。",
+    "authors": "Qinglong Hu, Qingfu Zhang, Fei Liu, Xialiang Tong, Kun Mao, Mingxuan Yuan",
+    "venue": "arXiv 预印本（2026；尚未见正式发表记录）",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2608.03129",
+    "tags": [
+      "无特征实例聚类",
+      "算法组合",
+      "尾部鲁棒性"
+    ],
+    "presenter": "",
+    "id": "all-29"
+  },
+  {
+    "topic": "5. 实例异质性导向的启发式或启发式集合设计",
+    "title": "RouteRepair: Instance-Level Failure Diagnosis and Targeted Repair in LLM-Based Automated Heuristic Design for Routing Optimization",
+    "method": "RouteRepair",
+    "motivation": "路径优化在货运、城市物流与共享出行中需要在有限算力预算下获得高质量启发式；LLM-AHD 的聚合评估会掩盖在特定实例结构上的反复失败。",
+    "summary": "提出 RouteRepair：从实例级性能诊断父代启发式的特定弱点，对相应启发式组件做定向修改，同时保护原本表现良好的行为；结合路径证据、求解器行为与程序上下文定义有界的修复目标，并用父子配对评估验证“失败修复”与“附带退化”。在 TSP 与 CVRP 上覆盖构造式搜索、导引局部搜索与蚁群优化：RouteRepair-GLS 将 TSP 平均最优间隙从 1.7476% 降至 0.7587%，构造式 CVRP 启发式相对 savings 启发式平均降低路径成本 1.91%。",
+    "authors": "Binghao Ji, Di Huang, Jiahui Fang, Zhiyuan Liu",
+    "venue": "arXiv 预印本（2026；尚未见正式发表记录）",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2609.11452",
+    "tags": [
+      "实例级失败诊断",
+      "定向修复",
+      "父子配对评估"
+    ],
+    "presenter": "",
+    "id": "all-30"
+  },
+  {
+    "topic": "5. 实例异质性导向的启发式或启发式集合设计",
+    "title": "Large language models discover complementary heuristics for combinatorial optimization",
+    "method": "LACE（LLM-driven Algorithm Construction via Complementary Evolution）",
+    "motivation": "为每个新的组合优化问题变体设计有效启发式需要深厚领域知识并耗费专家数月迭代；直接提示 LLM 虽能生成可执行代码，但一次性合成完整启发式在新问题上常常失败。",
+    "summary": "提出 LACE 框架，把算法设计分解为输入模式、输出模式、工具库与启发式组合（I–O–T–H 接口），在严格运行时间预算下通过“互补进化”持续生成并筛选能处理异构实例的专用启发式。在 36 个 CO-Bench 经典问题上平均得分 0.945（最强已有 LLM 方法 0.870、无框架直接提示 0.571），说明增益来自框架而非模型；在 4 个结构上全新的问题上达到 0.97–0.99，而 5 个已有 LLM 基线无法产出可行算法。",
+    "authors": "Huatian Gong, Shuaian Wang, Dongping Song, Jiuh-Biing Sheu, Ran Yan",
+    "venue": "Nature Machine Intelligence（在线发表于 2026-10-01）",
+    "year": 2026,
+    "url": "https://doi.org/10.1038/s42256-026-01307-8",
+    "tags": [
+      "问题契约接口（I-O-T-H）",
+      "互补进化",
+      "时间预算约束",
+      "专用启发式"
+    ],
+    "presenter": "",
+    "id": "all-31"
+  },
+  {
+    "topic": "5. 实例异质性导向的启发式或启发式集合设计",
+    "title": "Rethinking LLM-Driven Heuristic Design: Generating Efficient and Specialized Solvers via Dynamics-Aware Optimization",
+    "method": "DASH（Dynamics-Aware Solver Heuristics）",
+    "motivation": "现有 LLM 启发式设计（LHD）框架存在两个关键局限：一是只看端点指标（与参考解的最终差距）排序求解器，忽略收敛过程与运行时间效率；二是分布偏移时需要重新适配异构实例组，适配成本高。",
+    "summary": "提出 DASH：以“收敛感知”指标为引导，联合优化求解器的搜索机制与运行时调度，从而识别并生成既高效又高性能的专用求解器；同时降低跨实例分组的适配成本，使系统在分布偏移下仍能高效产出特化求解器。",
+    "authors": "Rongzheng Wang, Yihong Huang, Muquan Li, Jiakai Li, Di Liang, Bob Simons, Pei Ke, Shuang Liang, Ke Qin",
+    "venue": "arXiv 预印本（2026 首发，2026 年更新至 v2）",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2601.20868",
+    "tags": [
+      "收敛过程感知指标",
+      "运行时调度",
+      "专用求解器",
+      "降低实例适配成本"
+    ],
+    "presenter": "",
+    "id": "all-32"
+  },
+  {
+    "topic": "5. 实例异质性导向的启发式或启发式集合设计",
+    "title": "DHEvo: Data-Algorithm Based Heuristic Evolution for Generalizable MILP Solving",
+    "method": "DHEvo",
+    "motivation": "同一类混合整数线性规划（MILP）实例也存在明显的结构与分布差异。现有 LLM 启发式进化通常在少量固定实例上优化，难以捕捉问题类的共同特征，导致生成的下潜启发式在其他实例上泛化不足。",
+    "summary": "提出数据—算法共进化框架（实际实例并没有进化，只是在进化过程中更新实例池中应该针对的实例）。优先选择那些让当前启发式取得较好适应度且可行域更规则的实例，而不是专门寻找困难实例.以“实例—启发式”配对作为搜索单元，按适应度保留高质量配对，并迭代生成、交叉、变异和筛选启发式。采用 Designer、Coder、Reviewer、Judge 四类 LLM 角色，分别负责方案设计、代码实现、检查反馈与最终裁决。实际设计对象是嵌入 SCIP 下潜流程的评分规则，主要目标是提高同一问题类内的泛化。实验覆盖组合拍卖、集合覆盖、设施选址、最大独立集及实际 MILP 任务。表2中，Facility 上的求解时间由 EoH 的 197.35 秒降至 181.27 秒，原始—对偶积分（PDI）由 504.56 降至 490.43。",
+    "authors": "Zhihao Zhang, Siyuan Li, Chenxi Li, Feifan Liu, Mengjing Chen, Kai Li, Tao Zhong, Bo An, Peng Liu",
+    "venue": "arXiv 预印本；有 ICLR 2026 投稿记录，未录用",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2507.15615v1",
+    "tags": [
+      "数据—算法共进化",
+      "代表性实例选择",
+      "实例—代码配对",
+      "多智能体生成与审查",
+      "MILP 下潜启发式",
+      "问题类内泛化"
+    ],
+    "presenter": "",
+    "id": "all-33"
+  },
+  {
+    "topic": "5. 实例异质性导向的启发式或启发式集合设计",
+    "title": "RAISE: LLM-based Automated Heuristic Design with Robust Adversary Instance Search",
+    "method": "RAISE（Robust Adversary Instance Search）",
+    "motivation": "在固定训练分布上优化的启发式可能在分布变化后明显退化。完全无约束的困难实例生成又可能偏向不符合实际部署条件的极端实例，并增加 LLM 调用成本，需要在可控的分布邻域内提升启发式鲁棒性。",
+    "summary": "将鲁棒启发式设计表述为训练实例邻域内的受约束最坏情形优化，并提出双层进化框架：外层使用 LLM 生成、交叉和变异启发式；内层不调用 LLM，而以遗传搜索寻找能暴露当前启发式弱点的困难实例。内层采用九种基分布的18维参数化，并通过 ε 球投影约束偏移范围；定期加入新困难实例后重新评价启发式种群。主实验使用 GPT-5-mini，覆盖在线装箱、在线作业车间调度、在线车辆路径三类任务及五种测试分布。表1中，在线装箱 n=5000、容量 C=200 时，RAISE（ε=0.002）在五种测试分布上的平均废料比为 1.671%，低于 EoH-S 的 1.828% 和 EoH 的 4.776%。",
+    "authors": "Fei Liu, Alessio Figalli, Patrick Owen, Nicola Serra",
+    "venue": "arXiv 预印本",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2606.31801v1",
+    "tags": [
+      "鲁棒启发式设计",
+      "受约束对抗实例搜索",
+      "双层进化",
+      "无需 LLM 的内层搜索",
+      "基分布参数化",
+      "ε 球投影",
+      "分布偏移鲁棒性"
+    ],
+    "presenter": "",
+    "id": "all-34"
+  },
+  {
+    "topic": "5. 实例异质性导向的启发式或启发式集合设计",
+    "title": "MOSAIC: Adversarial Co-evolution of Specialist Heuristics and Problem Instances for LLM-based Automated Heuristic Design",
+    "method": "MOSAIC（Map Of Specialists via Adversarial Instance Co-evolution",
+    "motivation": "单一启发式难以适应所有实例结构，而固定训练集和平均性能筛选容易淘汰只在局部区域表现优秀的专长启发式。仅提供“哪个更好”的标量反馈，也无法说明启发式在什么实例区域、因为什么机制获胜。",
+    "summary": "在实例结构特征索引的质量—多样性（QD）网格中，对抗共演化专长启发式与判别性实例。每个网格单元保存专长启发式、代表实例和局部经验，形成持续记忆。对来自不同区域的启发式成对生成能区分双方优劣的实例，用决策树定位各自获胜区域，再由对比反思产生两个特化方向和一个融合方向，指导交叉与区域感知变异；候选主要在局部邻域评价，以保护区域专长。最后在验证集上贪心抽取互补组合。实验覆盖 TSP、背包问题及 CVRP，采用 GPT-4o-mini、GPT-5-nano。表1中，GPT-5-nano、TSP n=200 的 Top-5 平均参考 gap 为 10.96%，低于 EoH-S 的 14.05%。",
+    "authors": "Oguzhan Gungordu, Siheng Xiong, Faramarz Fekri",
+    "venue": "arXiv 预印本",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2608.07544v1",
+    "tags": [
+      "区域专长启发式",
+      "互补组合",
+      "质量—多样性网格",
+      "判别性实例生成",
+      "决策树区域分析",
+      "对比多方向反思",
+      "局部评价",
+      "持续经验记忆"
+    ],
+    "presenter": "",
+    "id": "all-35"
+  },
+  {
+    "topic": "5. 实例异质性导向的启发式或启发式集合设计",
+    "title": "ACEvo: Adversarial Co-Evolution of Problem Distributions and Solvers for Combinatorial Optimization",
+    "method": "ACEvo（Adversarial Co-Evolution）",
+    "motivation": "现有 LLM 启发式设计通常在固定实例分布上优化求解器，容易掩盖算法弱点，限制所得启发式对分布变化的适应能力。需要让困难实例生成与启发式改进形成闭环，持续暴露并修补求解器的不足。",
+    "summary": "提出求解器程序与实例生成程序的双种群对抗共进化框架：生成器寻找能暴露当前求解器弱点的实例分布，求解器则适应不断变化的困难实例；通过程序变异、性能选择和 LLM 反思反馈推进两侧进化，形成自生成的对抗课程。采用 Claude 3.7 Sonnet，在 GLS/ACO 求解框架下覆盖 TSP、定向越野问题 OP 和 CVRP，并以 TSPLIB 检验泛化。论文表1报告，困难 TSP1000 上 ACEvo 的最优性差距为 7.672%，低于 KGLS 的 7.791% 和 ReEvo 的 7.851%。核心贡献是把实例分布也纳入进化过程，同时改进启发式与评价环境。",
+    "authors": "Ruibo Duan, Yuxin Liu, Haoran Ye, Xinyao Dong, Zhiqiang Xu, Chenglin Fan",
+    "venue": "COLM 2026（官方预论文集已收录；现题名对应 arXiv v2，2026-08-09）",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2506.02594v2",
+    "tags": [
+      "求解器—实例生成器对抗共进化",
+      "动态实例分布",
+      "自生成课程",
+      "反思反馈",
+      "程序变异",
+      "分布外泛化"
+    ],
+    "presenter": "",
+    "id": "all-36"
+  },
+  {
+    "topic": "5. 实例异质性导向的启发式或启发式集合设计",
+    "title": "Game-Theoretic Co-Evolution for LLM-Based Heuristic Discovery",
+    "method": "ASRO（Algorithm Space Response Oracles）",
+    "motivation": "固定评测分布容易使启发式发现过拟合，并在现有实例无法继续暴露弱点时形成性能瓶颈。需要把求解器与实例分布的共同适应纳入统一优化框架，利用历史策略维持持续、稳定的对抗压力。",
+    "summary": "将启发式发现建模为求解器程序与实例生成器程序之间的双人零和博弈，把 PSRO 的响应式优化思想迁移到可执行程序空间。保留并扩展双方历史策略池，通过交叉评估构造收益矩阵，求解受限博弈的混合元策略，再由 LLM 程序搜索产生针对对方混合策略的近似最佳响应。主实现采用 EoH 风格搜索，另以 ReEvo 风格搜索验证框架的可替换性。实验覆盖在线装箱 OBP、TSP 和 CVRP，主要生成固定求解框架中的启发式规则。论文表1报告，Hard28-SA（物品按尺寸升序到达）上，相对参考下界的差距由 EoH 的 40.02% 降至 ASRO-EoH 的 12.45%。核心创新是用历史策略池、混合元策略和近似最佳响应组织动态评价课程。",
+    "authors": "Xinyi Ke, Kai Li, Junliang Xing, Yifan Zhang, Jian Cheng",
+    "venue": "ICML 2026；Proceedings of Machine Learning Research，306:56499–56526",
+    "year": 2026,
+    "url": "https://proceedings.mlr.press/v306/ke26b.html",
+    "tags": [
+      "程序空间零和博弈",
+      "PSRO",
+      "历史策略池",
+      "混合元策略",
+      "近似最佳响应",
+      "求解器—生成器共演化",
+      "动态评测"
+    ],
+    "presenter": "",
+    "id": "all-37"
+  },
+  {
+    "topic": "5. 实例异质性导向的启发式或启发式集合设计",
+    "title": "Evolving Parallel Algorithm Portfolios via Potential-Aware Instance Generation with LLMs",
+    "method": "PIAC（Potential-aware Instance and Algorithm Co-evolution）",
+    "motivation": "少样本条件下构造的并行算法组合容易过拟合。已有实例—算法共进化方法通常依赖高质量参考解衡量实例难度，且固定的实例生成操作容易产生同质化数据；单纯寻找困难实例，也未必能找到最有利于组合继续改进的训练实例。",
+    "summary": "提出潜在收益感知的实例—算法组合共进化框架。核心指标 potential gain 通过扰动组合成员的启发式评分矩阵，观察能否获得更好的解，以估计当前组合在某个实例上的改进潜力，实例筛选过程无需外部参考解。同时让 LLM 演化可执行的实例变异程序，扩大训练分布；算法侧通过互补交叉、变异、贪心选择与替换维护固定规模的互补组合，主设置包含5个成员。使用 DeepSeek-V3.2，在贪心构造、蚁群优化及引导局部搜索骨架中实例化，覆盖 TSP、CVRP 和六种空间分布。表II中，TSP 构造式组合的平均参考 gap 从 EoH-S 的 14.83% 降至 11.90%，相对下降约 19.76%。",
+    "authors": "Shaofeng Zhang, Shengcai Liu, Zhiyuan Wang, Ke Tang",
+    "venue": "arXiv 预印本",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2608.06808v1",
+    "tags": [
+      "并行算法组合",
+      "潜在收益",
+      "免参考解的实例筛选",
+      "LLM 实例变异程序",
+      "实例—算法共进化",
+      "互补性驱动选择",
+      "少样本泛化"
+    ],
+    "presenter": "",
+    "id": "all-38"
+  },
+  {
+    "topic": "5. 实例异质性导向的启发式或启发式集合设计",
+    "title": "Illuminating Heuristic Design: Language-Model-Driven Quality-Diversity Evolution for Combinatorial Optimization",
+    "method": "QD-LHD",
+    "motivation": "现有 LLM 启发式设计通常收敛到单个最优算法或小规模 Pareto 集，容易过度适应训练分布；面对实例分布变化，需要昂贵的重新搜索，缺少可直接调用的多样化专用算法库。",
+    "summary": "将自动启发式设计转化为质量–多样性优化问题，结合 LLM 变异与 MAP-Elites，维护覆盖不同策略区域的精英启发式档案。核心创新是 SHAP–AST 双重机制：利用代码抽象语法树特征与性能代理模型的 SHAP 归因，既构造档案描述符，又生成指导 LLM 修改代码的解释性反馈。单元竞争兼顾解质量、运行时间与随机扰动下的稳定性；部署时根据实例特征检索适配启发式，无需额外 LLM 调用。给出带条件的分布偏移鲁棒性分析，并在 CVRP、TSP、JSSP 的静态、扰动、随机和动态场景中验证。",
+    "authors": "Shikun Chen, Yangguang Liu（宁波财经学院人工智能学院）",
+    "venue": "IEEE Transactions on Evolutionary Computation",
+    "year": 2026,
+    "url": "https://doi.org/10.1109/TEVC.2026.3721299",
+    "tags": [
+      "质量–多样性",
+      "MAP-Elites",
+      "SHAP–AST",
+      "启发式档案",
+      "实例自适应选择",
+      "分布偏移"
+    ],
+    "presenter": "",
+    "id": "all-39"
+  },
+  {
+    "topic": "6. 跨任务通用算法设计",
+    "title": "Hierarchical Representations for Cross-task Automated Heuristic Design using LLMs",
+    "method": "MTHS（Multi-Task Hierarchical Search）",
+    "motivation": "现有工作主要依赖“程序”表示启发式，而程序天然任务特定，泛化能力不如 tabu search、guided local search 等成熟元启发式。",
+    "summary": "提出 MTHS：用分层表示与两层进化框架，在多个启发式设计任务上同时进化“任务无关的通用元启发式”与“任务特定的程序实现”；知识迁移机制使一个任务的精英程序能帮助其他任务。实验表明分层表示能有效支持多任务 AHD，且进化出的元启发式对相关任务具有强泛化能力，性能优于常用启发式与已有 LLM 驱动 AHD 方法。",
+    "authors": "Fei Liu, Rui Zhang, Shunyu Yao, Qinglong Hu, Kefeng Zheng, Zhichao Lu, Qingfu Zhang",
+    "venue": "ICML 2026（国际机器学习大会）",
+    "year": 2026,
+    "url": "https://icml.cc/virtual/2026/poster/60624",
+    "tags": [
+      "分层表示",
+      "多任务搜索",
+      "知识迁移",
+      "通用元启发式"
+    ],
+    "presenter": "",
+    "id": "all-40"
+  },
+  {
+    "topic": "6. 跨任务通用算法设计",
+    "title": "Generalizable Heuristic Generation Through LLMs with Meta-Optimization",
+    "method": "MoH",
+    "motivation": "现有 LLM-AHD 依赖人工预先固定的 EC 进化算子（启发式优化器 HO），搜索流程固定；大多采用单任务训练，跨尺寸、跨问题泛化能力受限，启发式探索空间被人工预设的进化流程约束。",
+    "summary": "双层元优化框架 MoH，将优化对象抬升到启发式优化器 HO 本身。外层元优化循环使用 LLM 生成、迭代改进 HO（搜索策略）；内层使用生成的 HO 去进化下游任务启发式；采用多任务联合评估方案，训练得到通用元优化器，不再依赖人工定义 EC 流程。在 TSP、BPP、CVRP 等任务上，跨尺寸泛化性能显著优于基线。",
+    "authors": "Yiding Shi, Jianan Zhou*, Wen Song*, Jieyi Bi, Yaoxin Wu, Zhiguang Cao, Jie Zhang（南洋理工大学、山东大学）",
+    "venue": "ICLR 2026",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2505.20881",
+    "tags": [
+      "双层元优化",
+      "启发式优化器自动生成",
+      "多任务元训练",
+      "跨尺寸泛化",
+      "自调用进化"
+    ],
+    "presenter": "",
+    "id": "all-41"
+  },
+  {
+    "topic": "7. 效率与资源感知的启发式设计",
+    "title": "In-the-loop Hyper-Parameter Optimization for LLM-Based Automated Design of Heuristics",
+    "method": "LLaMEA-HPO",
+    "motivation": "LLM 在生成算法的超参数微调上效率低，往往需要大量查询，带来高昂的计算与调用成本。",
+    "summary": "提出混合方法 LLaMEA-HPO：把超参数优化（HPO）过程嵌入 LLaMEA（LLM 进化算法）框架的循环之中。通过将调参任务下放给专门的 HPO 过程，让 LLM 专注生成新的算法结构，减少所需 LLM 查询次数、提升整体优化效率。",
+    "authors": "Niki van Stein, Diederick Vermetten, Thomas Bäck",
+    "venue": "ACM Transactions on Evolutionary Learning and Optimization（ACM TELO）",
+    "year": 2025,
+    "url": "https://doi.org/10.1145/3731567",
+    "tags": [
+      "超参数优化在环",
+      "减少 LLM 调用",
+      "算法结构生成"
+    ],
+    "presenter": "",
+    "id": "all-42"
+  },
+  {
+    "topic": "7. 效率与资源感知的启发式设计",
+    "title": "Nested-Refinement Metamorphosis: Reflective Evolution for Efficient Optimization of Networking Problems",
+    "method": "NeRM（Nested-Refinement Metamorphosis）",
+    "motivation": "LLM 在网络算法设计中表现出色，但迭代编码效率低、计算成本高。",
+    "summary": "受蝴蝶变态发育启发提出 NeRM：用“提示蜕变”（MoP）迭代精炼任务描述（如时延/带宽约束），用“算法蜕变”（MoA）生成更有效的方案（如合适的网络处理架构），二者嵌套精炼以保证任务描述与算法对齐；并引入预测器辅助的代码评估，提前过滤弱候选，模拟自然选择以降低计算成本。在 TSP（路由）、MKP（资源分配）、CVRP（服务网络协同）上性能与效率均优于 SOTA 方法。",
+    "authors": "Shuhan Guo, Nan Yin, James Kwok, Quanming Yao",
+    "venue": "ACL 2025（ACL 2025 会议论文集，pp. 17398–17429）",
+    "year": 2025,
+    "url": "https://doi.org/10.18653/v1/2025.findings-acl.895",
+    "tags": [
+      "任务描述-算法联合精炼",
+      "预测器代理评估",
+      "成本削减"
+    ],
+    "presenter": "",
+    "id": "all-43"
+  },
+  {
+    "topic": "7. 效率与资源感知的启发式设计",
+    "title": "Efficient Heuristics Generation for Solving Combinatorial Optimization Problems Using Large Language Models",
+    "method": "Hercules / Hercules-P",
+    "motivation": "缺少任务知识的提示容易让 LLM 给出空泛、不可操作的搜索方向；生成过程中还会出现大量语义相近的启发式，逐一执行评估造成计算浪费。",
+    "summary": "提出 核心抽象提示 CAP：从当前精英启发式中抽取影响性能的核心组件，再据此提出具体修改方向，并结合基于排名的父代选择形成 Hercules。进一步提出 性能预测提示 PPP，让 LLM 根据历史代码的语义相似性预测新启发式性能，形成 Hercules-P。通过 EXEMPLAR 选择有代表性的少样本示例，并用 置信度分层 ConS 决定接受预测或执行真实评估。基于信息增益分析 CAP 的作用；在四类生成任务、五类组合优化问题和八种 LLM 上验证，Hercules-P 相比 Hercules 将总体搜索时间减少约 7%–59%，同时保持相近的性能增益。",
+    "authors": "Xuan Wu, Di Wang, Chunguo Wu, Lijie Wen, Chunyan Miao, Yubin Xiao, You Zhou（吉林大学、南洋理工大学、清华大学；通讯作者：Yubin Xiao、You Zhou）",
+    "venue": "KDD 2025",
+    "year": 2025,
+    "url": "https://doi.org/10.1145/3711896.3736923",
+    "tags": [
+      "核心抽象提示",
+      "性能预测",
+      "语义相似性",
+      "示例选择",
+      "置信度分层",
+      "评估加速"
+    ],
+    "presenter": "",
+    "id": "all-44"
+  },
+  {
+    "topic": "8. 基准评测与实证分析",
+    "title": "Beyond the Hype: Benchmarking LLM-Evolved Heuristics for Bin Packing",
+    "method": "（基准研究，无方法缩写）",
+    "motivation": "LLM 与进化算法耦合生成新启发式发展迅速，但为了尽快证明方法优越性，对新启发式的评估往往很粗糙：数据集很少、每类实例很少、且只覆盖单一实例类别。",
+    "summary": "以装箱（bin packing）问题为例，首次对 LLM 生成的新启发式开展严格基准测试：在大量基准实例集上，将其与经典人工设计启发式全面对比，检验其是否真正超越人工设计、以及在不同实例类别上的稳健性，指出此前评估方式可能高估了 LLM 进化启发式的能力。",
+    "authors": "Kevin Sim, Quentin Renau, Emma Hart",
+    "venue": "EvoApplications 2025（EvoStar 2025, LNCS, pp. 386–402）",
+    "year": 2025,
+    "url": "https://doi.org/10.1007/978-3-031-90065-5_24",
+    "tags": [
+      "严格基准测试",
+      "装箱问题",
+      "人工启发式对比",
+      "结论稳健性"
+    ],
+    "presenter": "",
+    "id": "all-45"
+  },
+  {
+    "topic": "8. 基准评测与实证分析",
+    "title": "Fitness Landscape of Large Language Model-Assisted Automated Algorithm Search",
+    "method": "（实证分析，无方法缩写）",
+    "motivation": "LLM 辅助算法搜索（LAS）的适应度地形决定了搜索行为，但此前研究不足。",
+    "summary": "用图结构方法刻画并分析 LAS 的适应度地形：节点表示算法、边表示算法之间的转移；在 6 个算法设计任务与 6 个常用 LLM 上做大规模评测，发现 LAS 地形高度多峰且崎岖，组合优化任务上尤为明显，并呈现随任务与模型而异的结构差异；进一步比较 4 种算法相似度度量与算法性能的相关性，为设计更有效的搜索策略提供实证依据。",
+    "authors": "Fei Liu, Qingfu Zhang, Jialong Shi, Xialiang Tong, Kun Mao, Mingxuan Yuan",
+    "venue": "arXiv 预印本（2025 首发，同年更新至 v3）",
+    "year": 2025,
+    "url": "https://arxiv.org/abs/2504.19636",
+    "tags": [
+      "适应度地形",
+      "图分析",
+      "多峰/崎岖性",
+      "相似度度量"
+    ],
+    "presenter": "",
+    "id": "all-46"
+  },
+  {
+    "topic": "8. 基准评测与实证分析",
+    "title": "HeuriGym: An Agentic Benchmark for LLM-Crafted Heuristics in Combinatorial Optimization",
+    "method": "HeuriGym（基准框架）",
+    "motivation": "现有评测方法无法充分评估 LLM 在组合优化中的求解能力：封闭式问答容易饱和和被记忆，主观比较则缺乏一致性与严谨性。",
+    "summary": "提出 HeuriGym 智能体评测框架：LLM 提出启发式，通过代码执行获得评估反馈，并迭代精炼方案；目标明确、解空间开放。在计算机系统、物流、生物等领域的 9 个问题与 9 个 SOTA 模型上评测，揭示模型在工具使用、规划与迭代改进方面持续存在的局限，提供可扩展的标准化基准。",
+    "authors": "Hongzheng Chen, Yingheng Wang, Yaohui Cai, Hins Hu, Jiajie Li, Shirley Huang, Chenhui Deng, Rongjian Liang, Shufeng Kong, Haoxing Ren, Samitha Samaranayake, Carla P. Gomes, Zhiru Zhang",
+    "venue": "ICLR 2026（国际学习表征会议, Poster；arXiv 预印本 2025）",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2506.07972",
+    "tags": [
+      "智能体基准",
+      "可执行反馈闭环",
+      "跨领域问题集"
+    ],
+    "presenter": "",
+    "id": "all-47"
+  },
+  {
+    "topic": "8. 基准评测与实证分析",
+    "title": "Parametric Knowledge Cannot Overcome Instance\nBias in LLM-Based Automated Algorithm Design",
+    "method": "/",
+    "motivation": "LLM 的内部参数化知识和评估实例提供的外部指导会共同塑造最终算法。然而，LLM 的内部知识如何与外部实例指导相互作用，目前仍不清楚。",
+    "summary": "本文通过实证研究，考察实例对 LLM-based AAD 在已见问题和未见问题上的影响。对于已见问题，LLM 拥有足够的参数化知识，能够直接生成有竞争力的算法，因此实例提供的指导在很大程度上可以忽略。对于 LLM 缺乏充分先验知识的未见问题，LLM-based AAD 则更加依赖外部实例指导，存在偏差的实例分布会显著降低算法性能。为进一步研究这种依赖关系，我们提出一种自动生成对抗实例的进化方法。结果表明，在未见问题上，纳入实例的 LLM-based AAD 方法普遍容易受到实例偏差影响。研究发现，LLM 丰富的参数化知识能够减轻熟悉任务中的实例偏差；而面对未见问题，克服对实例的依赖至关重要。",
+    "authors": "Lu Han, Tonghao Wang Member, IEEE, Handing Wang Senior Member, IEEE",
+    "venue": "IEEE Transactions on Evolutionary Computation TEVC",
+    "year": 46288,
+    "url": "https://ieeexplore.ieee.org/document/11701559",
+    "tags": [
+      "LLM参数",
+      "实例偏差"
+    ],
+    "presenter": "已汇报",
+    "id": "all-48"
+  },
+  {
+    "topic": "8. 基准评测与实证分析",
+    "title": "Rethinking Code Similarity for Automated Algorithm Design with LLMs",
+    "method": "BehaveSim（算法行为相似性度量）；应用于 FunSearch + BehaveSim、EoH + BehaveSim",
+    "motivation": "代码文本、AST、嵌入及最终输出的相似性难以反映算法设计逻辑：少量代码修改可能显著改变求解行为，不同实现也可能执行相同策略，影响创新性判断与搜索多样性管理。",
+    "summary": "提出从问题求解轨迹 PSTraj 衡量算法相似性：记录迭代过程中逐步产生的中间解或部分解，依据解类型定义距离，再用 动态时间规整 DTW 对齐轨迹，并跨实例、初始状态汇总得到 BehaveSim。构建解耦代码、行为和结果相似性的算法对数据，验证传统指标的局限。将该度量分别用于 FunSearch 的行为生态位／岛屿管理和 EoH 的辅助多样性目标，在 Admissible Set、TSP、圆装填三类任务中改善搜索表现，同时支持生成算法的行为聚类与分析。",
+    "authors": "Rui Zhang, Zhichao Lu",
+    "venue": "ICLR 2026",
+    "year": 2026,
+    "url": "",
+    "tags": [
+      "行为相似性",
+      "求解轨迹",
+      "DTW",
+      "行为多样性",
+      "生态位搜索",
+      "算法创新性分析"
+    ],
+    "presenter": "",
+    "id": "all-49"
+  },
+  {
+    "topic": "9. 相邻方向：符号回归（挖掘数学公式）",
+    "title": "CoEvo: Continual Evolution of Symbolic Solutions Using Large Language Models",
+    "method": "CoEvo（Continual Evolution）",
+    "motivation": "符号解（数学表达式、逻辑规则、算法结构）的发现是科学与工程进步的基础，但传统方法搜索效率低、知识整合差；已有 LLM 方法无法对已发现的解及其知识做持续精炼与扩展，限制开放式创新。",
+    "summary": "提出 CoEvo 框架，把符号解搜索建模为“终身、迭代”的持续过程：在进化搜索中引入动态知识库，实现解的开放式创新与知识管理；并用自然语言、数学表达式、代码多种表示提升搜索效率。将 LLM 的推理能力与进化算法的探索能力结合，在提升搜索效率的同时支持持续发现过程。",
+    "authors": "Ping Guo, Qingfu Zhang, Xi Lin",
+    "venue": "AAAI 2026（AAAI 人工智能大会；arXiv 预印本 2024）",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2412.18890",
+    "tags": [
+      "符号解发现",
+      "动态知识库",
+      "多表示",
+      "持续/终身学习"
+    ],
+    "presenter": "",
+    "id": "all-50"
+  },
+  {
+    "topic": "9. 相邻方向：自动化优化建模",
+    "title": "Automated Optimization Modeling via a Localizable Error-Driven Perspective",
+    "method": "MIND",
+    "motivation": "用 LLM 做自动化优化建模时，后训练（post-training）效果受高质量训练数据稀缺与利用不足的严重制约；作者通过剖析错误模式发现两大局限：错误特有问题稀疏（L1）与困难问题奖励稀疏（L2）。",
+    "summary": "发现优化建模的错误传播具有“可定位”特性——建模错误常局限于特定语义片段，而不会扩散到整个解；据此提出 MIND 框架，从数据合成到后训练整体定制训练流程：构建聚焦、高密度的训练语料，并提出动态监督微调策略优化（DFPO）以局部精炼方式攻克困难问题。在六个基准上持续优于所有 SOTA 自动化优化建模方法。该方向关注“把实际问题建模为优化模型”，与启发式设计相邻但任务不同。",
+    "authors": "Weiting Liu, Han Wu, Yufei Kuang, Xiongwei Han, Tao Zhong, Jianfeng Feng, Wenlian Lu",
+    "venue": "arXiv 预印本（2026；尚未见正式发表记录）",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2602.11164",
+    "tags": [
+      "自动化优化建模",
+      "错误驱动学习",
+      "可定位错误",
+      "后训练数据合成"
+    ],
+    "presenter": "",
+    "id": "all-51"
+  }
+]
